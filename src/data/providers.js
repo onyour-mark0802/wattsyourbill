@@ -1,0 +1,14 @@
+export const PROVIDERS = [
+  { id: "celcor",   name: "CELCOR",           logo: "/logos/celcor logo.png", full: "CELCOR (Cabanatuan Electric Corporation)", area: "covers the entire City of Cabanatuan", color: "#2563eb", rate: 13.07, label: "13.07", asOf: "as of October 2026" },
+  { id: "clark",    name: "Clark Electric...",    logo: "/logos/clark_logo.png", full: "Clark Electric Distribution Corporation", area: "within the Clark Special Economic Zone (CSEZ) and its sub-zones", color: "#ea580c", rate: 7.54, label: "07.54", asOf: "as of August 2026 to Present" },
+  { id: "davao",    name: "Davao Light...",       logo: "/logos/davao-light logo.png", full: "Davao Light and Power Company", area: "the entire city and its surrounding rural and remote barangays/sitios.", color: "#4f46e5", rate: 13.24, label: "13.24", asOf: "as of September 11 - October 10, 2026" },
+  { id: "meralco",  name: "MERALCO",           logo: "/logos/meralco-logo.png", full: "MERALCO (Manila Electric Railroad and Light Company)", area: "Metro Manila and surrounding service areas", color: "#f26a21", rate: 15.0615, label: "15.0615", asOf: "as of October 2026" },
+  { id: "neeco1",   name: "NEECO I",           logo: "/logos/Neeco1 logo.png", full: "NEECO I (Nueva Ecija I Electric Cooperative, Inc.)", area: "spans one city and four municipalities located in the southern part of the province of Nueva Ecija.", color: "#ca8a04", rate: 12.2469, label: "12.2469", asOf: "as of October 2026" },
+  { id: "neeco2a1", name: "NEECO II - Area 1", logo: "/logos/neeco 2_area 1 logo.png", full: "NEECO II - Area 1 (Nueva Ecija II Electric Cooperative, Inc. – Area 1)", area: "covers the northern and western parts of Nueva Ecija", color: "#b45309", rate: 12.0279, label: "12.0279", asOf: "as of September 2026" },
+  { id: "neeco2a2", name: "NEECO II - Area 2", logo: "/logos/neeco 2_area 2 logo.png", full: "NEECO II - Area 2 (Nueva Ecija II Electric Cooperative, Inc. – Area 2)", area: "covers the central, southern, and eastern portions of Nueva Ecija", color: "#0d9488", rate: 14.4214, label: "14.4214", asOf: "as of September 2026" },
+  { id: "sajelco",  name: "SAJELCO",           logo: "/logos/sajelco logo.png", full: "SAJELCO (San Jose City Electric Cooperative)", area: "covering the 38 component barangays of San Jose City, Nueva Ecija", color: "#1d4ed8", rate: 13.4, label: "13.40", asOf: "as of August 2026" },
+  { id: "visayan",  name: "VECO",  logo: "/logos/visayan-electric logo.png", full: "VECO (Visayan Electric Company, Inc.)", area: "supplies greater Metro Cebu, covering 4 cities and 4 municipalities", color: "#0891b2", rate: 14.89, label: "14.89", asOf: "as of September 2026" },
+];
+
+export const peso = (n) =>
+  "₱" + n.toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });

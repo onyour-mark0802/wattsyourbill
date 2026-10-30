@@ -1,0 +1,674 @@
+:root{
+  --bg:#2f2f63;
+  --card:#3d3d84;
+  --pill:#44447f;
+  --bar:#b6b9ee;
+  --text:#fff;
+  --muted:#b9bbe6;
+  --btn:#2f35a8;
+  --focus:#fde68a;
+  --side:#25254f;
+  --field:#59599a;
+  --line:#5a5aa0;
+  --chip:#22243a;
+  --mark:#fde68a
+}
+
+*{
+  box-sizing:border-box
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.4
+}
+
+h1{
+  font-size:clamp(1.3rem,2.5vw,1.7rem);
+  margin:0
+}
+
+a{
+  color:inherit;
+  text-decoration:none
+}
+
+button{
+  font:inherit
+}
+
+:focus-visible{
+  outline:3px solid var(--focus);
+  outline-offset:2px
+}
+
+.note{
+  color:var(--muted);
+  font-size:.78rem
+}
+
+.label{
+  font-size:.78rem;
+  letter-spacing:.6px;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin:16px 0 8px
+}
+
+/* layout */
+.content{
+  max-width:1100px;
+  margin:0 auto;
+  padding:20px 16px 120px
+}
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:16px;
+  width:min(360px,calc(100% - 32px));
+  height:60px;
+  border-radius:22px;
+  background:var(--bar);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:36px;
+  z-index:10;
+  box-shadow:0 6px 18px rgba(0,0,0,.35)
+}
+.bottom-nav a{
+  width:52px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  color:#2b2b4f;
+  transition:background .15s,color .15s
+}
+.bottom-nav a:hover{
+  background:rgba(255,255,255,.35)
+}
+.bottom-nav a.active{
+  background:var(--btn);
+  color:#fff
+}
+
+@media (min-width:900px){
+  .content{padding:32px 40px 120px}
+}
+
+/* splash + home header */
+.splash{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  background:var(--bg);
+  color:var(--text);
+  padding:24px 24px 110px;
+  text-align:center
+}
+
+.splash__brand{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px
+}
+
+.splash__mark{
+  width:72px;
+  height:72px;
+  border-radius:20px;
+  background:var(--chip);
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+.splash__mark svg{
+  width:40px;
+  height:40px;
+  fill:var(--mark)
+}
+.splash__title{
+  font-size:clamp(2rem,6vw,3.4rem);
+  font-weight:800;
+  margin:0
+}
+/* Blur the content behind when loading */
+.splash.is-loading > *:not(.loading-overlay) {
+  filter: blur(6px);
+  transition: filter 0.3s ease;
+}
+
+/* Modal Overlay Container */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.2); /* Soft dimming layer */
+}
+
+/* White Pop-up Card */
+.loading-card {
+  background: #ffffff;
+  color: #1e1b4b;
+  padding: 30px 40px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(30, 27, 75, 0.1);
+  border-top: 4px solid #1e1b4b;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.app-logo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:var(--chip);
+  flex:none;
+  overflow:hidden
+}
+.app-logo svg{width:28px;height:28px;fill:var(--mark)}
+.app-logo img{width:100%;height:100%;object-fit:contain}
+
+.homehead{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:22px
+}
+.homehead h1{
+  font-size:clamp(1.6rem,4vw,2.2rem);
+  font-weight:800
+}
+.sub{
+  font-size:1.1rem;
+  font-weight:500;
+  color:var(--muted);
+  margin:0 0 8px
+}
+.narrow{
+  max-width:560px;
+  margin:0 auto
+}
+.narrow-lg{
+  max-width:900px;
+  margin:0 auto
+}
+
+/* cards and lists */
+.card{
+  background:var(--card);
+  border-radius:14px
+}
+.list{
+  padding:8px 14px
+}
+.list-title{
+  font-size:.78rem;
+  color:var(--muted);
+  padding:6px 0 8px
+}
+.row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 0;
+  border-top:1px solid var(--line)
+}
+.grow{
+  flex:1;
+  min-width:0
+}
+.right{
+  text-align:right;
+  font-weight:700;
+  font-size:.95rem
+}
+.right small{
+  display:block;
+  font-size:.68rem;
+  color:var(--muted);
+  font-weight:400
+}
+.logo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  overflow:hidden;
+  flex:none;
+  color:#fff;
+  font-weight:700
+}
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:4px
+}
+
+/* page header: back arrow + centered title */
+.pagehead{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  min-height:44px
+}
+.pagehead h1{
+  font-size:1.15rem;
+  font-weight:700
+}
+.back{
+  position:absolute;
+  left:0;
+  top:0;
+  width:44px;
+  height:44px;
+  border:0;
+  background:none;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  cursor:pointer
+}
+
+/* inputs */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--field);
+  border-radius: 10px;
+  padding: 0 14px;
+  height: 46px;
+  width: 100%;
+  border: 2px solid transparent; /* Keeps layout stable on focus */
+  transition: border-color 0.15s ease;
+}
+
+/* Removes default yellow outline when focused */
+.search:focus-within {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6); 
+}
+
+.search.flat {
+  background: none;
+  border-bottom: 1px solid var(--text);
+  border-radius: 0;
+  padding: 0 4px;
+  max-width: none;
+}
+
+.search.flat:focus-within {
+  border-color: var(--text);
+}
+
+.search input {
+  background: none;
+  height: 44px;
+  padding: 0;
+  border-radius: 0;
+  outline: none; /* Removes any inner browser focus styles on the text input */
+}
+
+input,select{
+  width:100%;
+  height:46px;
+  border:0;
+  border-radius:10px;
+  background:var(--card);
+  color:var(--text);
+  font-size:1rem;
+  padding:0 14px
+}
+input::placeholder{
+  color:var(--muted)
+}
+
+/* Target number or text input fields */
+input[type="number"],
+input[type="text"] {
+  outline: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+  box-shadow: none !important;
+}
+
+/* When the input is clicked or focused */
+input[type="number"]:focus,
+input[type="number"]:focus-visible,
+input[type="text"]:focus,
+input[type="text"]:focus-visible {
+  outline: none !important;
+  border-color: rgba(255, 255, 255, 0.5); /* Slightly brighter border on focus */
+  box-shadow: none !important;
+}
+
+/* Ensure global focus doesn't force a yellow outline on select elements */
+select:focus,
+select:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Custom Select Wrapper */
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* White with 50% opacity */
+  border-radius: 10px;
+  background-color: var(--pill);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0 40px 0 14px;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.select-wrap select:focus,
+.select-wrap select:focus-visible {
+  outline: none !important;
+  border-color: rgba(255, 255, 255, 0.8); /* Slightly brighter when focused */
+  box-shadow: none !important;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Allows clicks to pass through to the select */
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+}
+
+.rate{
+  border:2px solid #b6b9ee;
+  height:54px
+}
+
+/* providers grid grows with the screen */
+.logo-grid{
+  display:grid;
+  gap:18px 12px;
+  grid-template-columns:repeat(auto-fill,minmax(104px,1fr));
+  margin-top:20px
+}
+.tile{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  font-size:.78rem;
+  font-weight:700;
+  text-align:center;
+  padding:8px;
+  border-radius:12px
+}
+.tile:hover{
+  background:var(--pill)
+}
+
+/* selected provider */
+.selcard{
+  padding:14px
+}
+.selrow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  padding-top:14px
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight:700;
+  font-size:.85rem;
+  margin-left:auto
+}
+.tick{
+  display:inline-flex;
+  width:20px;
+  height:20px;
+  border-radius:5px;
+  background:#22e822;
+  color:#06300a;
+  align-items:center;
+  justify-content:center
+}
+.area{
+  flex-basis:100%;
+  font-size:.72rem;
+  color:var(--muted)
+}
+.ratelabel{
+  font-size:.95rem;
+  margin:34px 0 8px
+}
+.big{
+  display:block;
+  width:100%;
+  height:54px;
+  border:0;
+  border-radius:27px;
+  background:var(--btn);
+  color:#fff;
+  font-weight:800;
+  letter-spacing:1.5px;
+  margin-top:48px;
+  cursor:pointer
+}
+
+/* dashboard */
+.pill{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  position:relative;
+  background:var(--pill);
+  border-radius:16px;
+  padding:10px;
+  font-size:.8rem;
+  font-weight:400;
+  letter-spacing:.8px;
+  margin:20px 0 12px
+}
+.pill-ic{
+  position:absolute;
+  left:10px;
+  display:inline-flex;
+  width:24px;
+  height:24px;
+  border-radius:6px;
+  background:#7676d6;
+  align-items:center;
+  justify-content:center
+}
+.cards{
+  display:grid;
+  gap:12px
+}
+.cards.three{
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr))
+}
+.cards.two{
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr))
+}
+.wcard{
+  background:#fffdf9;
+  color:#2b2b2b;
+  border-radius:12px;
+  padding:10px 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center
+}
+.wlabel{
+  align-self:flex-start;
+  font-size:.8rem;
+  font-weight:600;
+  color:#444
+}
+.cost{
+  background:var(--card);
+  border-radius:12px;
+  padding:12px 16px
+}
+.cost span{
+  display:block;
+  font-size:.78rem;
+  color:var(--muted)
+}
+.cost b{
+  font-size:1.5rem
+}
+.meter{
+  margin-top:28px;
+  background:var(--card);
+  border-radius:12px;
+  padding:10px 14px
+}
+/* Meter Connection Header */
+.meter summary.meter-summary {
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--text);
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes text to the left and arrow to the right */
+  width: 100%;
+  list-style: none;
+}
+
+/* Hides default browser disclosure arrows */
+.meter summary.meter-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Arrow rotation animation when expanded */
+.meter[open] summary.meter-summary .meter-arrow {
+  transform: rotate(180deg);
+}
+
+.meter-arrow {
+  transition: transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+}
+
+.conn{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:10px 0 4px 
+}
+.conn input{
+  flex:1;
+  min-width:200px;
+  background:var(--bg);
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Clean subtle border */
+  border-radius: 10px;
+  outline: none !important;
+}
+
+.conn input:focus,
+.conn input:focus-visible {
+  outline: none !important;
+  border-color: rgba(255, 255, 255, 0.5); /* Matches your select border opacity on focus */
+  box-shadow: none !important;
+}
+.small{
+  height:44px;
+  padding:0 18px;
+  border:0;
+  border-radius:10px;
+  background:var(--bar);
+  color:#1c1c4a;
+  font-weight:700;
+  cursor:pointer
+}
+.small.ghost{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--text)
+}
+
+/* Rate input with Peso Prefix */
+.rate-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-prefix {
+  position: absolute;
+  left: 16px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  pointer-events: none;
+}
+
+.rate {
+  border: 2px solid #b6b9ee;
+  height: 54px;
+  padding-left: 36px; /* Space for the ₱ symbol */
+}
+
+@media (min-width:1200px){
+  html{font-size:18px}
+  .narrow-lg{max-width:1000px}
+}
